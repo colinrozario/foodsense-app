@@ -2,39 +2,266 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * FoodSense Global CSS Utilities
+ * All reusable NativeWind class patterns for the app.
+ * Matches the design theme exactly (see theme/tokens.ts).
+ */
+
 @layer components {
-  /* Card surface */
-  .card {
-    @apply bg-surface-card rounded-2xl p-4;
+
+  /* =========================================================================
+   * LAYOUT
+   * ========================================================================= */
+
+  /** Full-screen cream background — use on every screen root View */
+  .screen {
+    @apply flex-1 bg-cream;
   }
 
-  /* Primary CTA button */
+  /** Horizontal screen padding */
+  .px-screen {
+    @apply px-5;
+  }
+
+  /* =========================================================================
+   * TYPOGRAPHY
+   * ========================================================================= */
+
+  /** Large hero heading — onboarding "Hello! Ready to eat better?" */
+  .text-hero {
+    @apply text-3xl font-bold text-ink leading-tight;
+  }
+
+  /** Screen / section title */
+  .text-title {
+    @apply text-2xl font-bold text-ink;
+  }
+
+  /** Card heading */
+  .text-heading {
+    @apply text-lg font-bold text-ink;
+  }
+
+  /** Section label */
+  .text-section {
+    @apply text-md font-bold text-ink;
+  }
+
+  /** Body text */
+  .text-body {
+    @apply text-base text-ink-muted;
+  }
+
+  /** Small / caption */
+  .text-caption {
+    @apply text-sm text-ink-muted;
+  }
+
+  /** Tiny label */
+  .text-label {
+    @apply text-xs text-ink-faint font-medium;
+  }
+
+  /** Large number display — "195" on energy card */
+  .text-display {
+    @apply text-hero font-bold text-white;
+  }
+
+  /** Primary link text */
+  .text-link {
+    @apply text-md text-primary font-medium;
+  }
+
+  /** FoodSense brand name in headers */
+  .text-brand {
+    @apply text-lg font-bold text-primary;
+  }
+
+  /* =========================================================================
+   * BUTTONS
+   * ========================================================================= */
+
+  /** Primary filled pill button — "Get Started" */
   .btn-primary {
-    @apply bg-brand-500 rounded-xl px-6 py-3 items-center justify-center;
+    @apply bg-primary rounded-pill items-center justify-center px-6 py-4;
   }
 
-  /* Ghost button */
+  .btn-primary-text {
+    @apply text-white font-bold text-md;
+  }
+
+  /** Secondary outline pill button — "Log in" */
+  .btn-secondary {
+    @apply bg-surface border border-primary rounded-pill items-center justify-center px-6 py-4;
+  }
+
+  .btn-secondary-text {
+    @apply text-primary font-bold text-md;
+  }
+
+  /** Ghost / tertiary button */
   .btn-ghost {
-    @apply border border-ink-faint rounded-xl px-6 py-3 items-center justify-center;
+    @apply bg-transparent rounded-pill items-center justify-center px-4 py-3;
   }
 
-  /* Label for form inputs */
-  .input-label {
-    @apply text-ink-muted text-sm font-medium mb-1;
+  .btn-ghost-text {
+    @apply text-primary font-medium text-md;
   }
 
-  /* Text input */
+  /** Icon action button — header top-right (dashed border style) */
+  .btn-icon {
+    @apply w-10 h-10 rounded-icon border border-border items-center justify-center;
+  }
+
+  /* =========================================================================
+   * CARDS
+   * ========================================================================= */
+
+  /** Standard white card */
+  .card {
+    @apply bg-surface rounded-lg p-4;
+  }
+
+  /** Large card with more padding */
+  .card-lg {
+    @apply bg-surface rounded-xl p-5;
+  }
+
+  /** Primary colored card (energy density, weekly summary) */
+  .card-primary {
+    @apply bg-primary rounded-xl p-5;
+  }
+
+  /** Danger / alert card (allergen alert) */
+  .card-danger {
+    @apply bg-danger rounded-xl p-4;
+  }
+
+  /* =========================================================================
+   * CHIPS & TAGS
+   * ========================================================================= */
+
+  /** Active dietary preference chip — "Vegan" */
+  .chip-active {
+    @apply bg-primary rounded-pill px-4 py-2;
+  }
+
+  .chip-active-text {
+    @apply text-white font-medium text-sm;
+  }
+
+  /** Inactive dietary preference chip */
+  .chip-inactive {
+    @apply bg-surface border border-border rounded-pill px-4 py-2;
+  }
+
+  .chip-inactive-text {
+    @apply text-ink font-medium text-sm;
+  }
+
+  /** Allergen tag chip (pink bg + warning icon) */
+  .chip-allergen {
+    @apply bg-danger-light border border-danger rounded-pill px-3 py-1.5 flex-row items-center gap-1;
+  }
+
+  .chip-allergen-text {
+    @apply text-danger font-medium text-sm;
+  }
+
+  /** "Scan Result" amber floating badge */
+  .badge-scan {
+    @apply bg-warning rounded-pill px-3 py-1.5;
+  }
+
+  .badge-scan-text {
+    @apply text-white font-bold text-sm;
+  }
+
+  /** Grade circle — A (green), B (amber), C (red) */
+  .grade-circle {
+    @apply w-8 h-8 rounded-circle items-center justify-center;
+  }
+
+  .grade-A {
+    @apply bg-success;
+  }
+
+  .grade-B {
+    @apply bg-warning;
+  }
+
+  .grade-C {
+    @apply bg-danger;
+  }
+
+  .grade-text {
+    @apply text-white font-bold text-sm;
+  }
+
+  /* =========================================================================
+   * ADD ALLERGEN BUTTON (dashed purple border)
+   * ========================================================================= */
+  .btn-add-allergen {
+    @apply border border-primary rounded-pill px-4 py-2 flex-row items-center gap-1;
+  }
+
+  .btn-add-allergen-text {
+    @apply text-primary font-medium text-sm;
+  }
+
+  /* =========================================================================
+   * LIST ITEMS
+   * ========================================================================= */
+
+  /** Recent scan row */
+  .scan-row {
+    @apply flex-row items-center gap-3 py-3;
+  }
+
+  /** Product thumbnail in scan list */
+  .scan-thumbnail {
+    @apply w-14 h-14 rounded-lg bg-cream overflow-hidden;
+  }
+
+  /* =========================================================================
+   * SECTION HEADERS
+   * ========================================================================= */
+
+  .section-header {
+    @apply flex-row items-center justify-between mb-3;
+  }
+
+  /* =========================================================================
+   * INPUTS
+   * ========================================================================= */
+
   .input {
-    @apply bg-surface-muted text-ink rounded-xl px-4 py-3 border border-ink-faint;
+    @apply bg-surface border border-border rounded-lg px-4 py-3 text-base text-ink;
   }
 
-  /* Section heading */
-  .section-title {
-    @apply text-ink text-xl font-semibold;
+  .input-label {
+    @apply text-sm font-medium text-ink-muted mb-1;
   }
 
-  /* Danger pill badge */
-  .badge-danger {
-    @apply bg-danger/20 text-danger rounded-full px-3 py-1 text-xs font-semibold;
+  /* =========================================================================
+   * DIVIDER
+   * ========================================================================= */
+
+  .divider {
+    @apply h-px bg-border w-full;
   }
+
+  /* =========================================================================
+   * HEADER (app top bar)
+   * ========================================================================= */
+
+  .app-header {
+    @apply flex-row items-center justify-between px-5 py-3;
+  }
+
+  .app-header-logo {
+    @apply flex-row items-center gap-2;
+  }
+
 }
